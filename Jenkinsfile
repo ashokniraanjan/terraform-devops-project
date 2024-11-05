@@ -1,4 +1,4 @@
-pipeline {
+figurepipeline {
     agent any
 
     parameters {
@@ -26,7 +26,7 @@ pipeline {
                        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-crendentails-rwagh']]){
                             dir('infra') {
                             sh 'echo "=================Terraform Init=================="'
-                            sh 'terraform init'
+                            sh 'terraform init -reconfigure'
                         }
                     }
                 }
